@@ -1,7 +1,7 @@
 class Space {
   int id;
   String name;
-  double price;
+  int price;
   String imageUrl;
   String city;
   String country;
