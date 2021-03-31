@@ -1,6 +1,6 @@
 # golek_kos
 
-A new Flutter project.
+A new Flutter project. Designer UI / UX by [Pixel BuildWith Angga](https://www.figma.com/file/QsXTd9myy85pmKjKwrNKS9/Cozy-%5BFull-Edition%5D-Update?node-id=0%3A1)
 
 ## Getting Started
 
