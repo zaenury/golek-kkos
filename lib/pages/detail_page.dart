@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:golek_kos/pages/error_page.dart';
 import 'package:golek_kos/widgets/facility_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../theme.dart';
 
 class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //function for plugin url_launcher
+    //Flutter has to inject plugin dependencies into the platform-specific parts of your app
+    //hot restart/hot reload is not enough to trigger the injection, then close & re run the app
+    launchURL(String url) async => await canLaunch(url)
+        ? await launch(url)
+        // : throw 'could not launch $url';
+        : Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ErrorPage()));
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -233,9 +244,16 @@ class DetailPage extends StatelessWidget {
                                 fontSize: 14,
                               ),
                             ),
-                            Image.asset(
-                              'assets/btn_map.png',
-                              width: 40,
+                            InkWell(
+                              onTap: () {
+                                // launchURL(
+                                //     'https://www.google.co.id/maps/place/Pondok+Modern+Darussalam+Gontor/@-7.9280831,111.4960683,17z/data=!3m1!4b1!4m5!3m4!1s0x2e790ac1e1671b99:0x3a0474ac71cbc7a9!8m2!3d-7.9280884!4d111.498257');
+                                launchURL('asdfawdf');
+                              },
+                              child: Image.asset(
+                                'assets/btn_map.png',
+                                width: 40,
+                              ),
                             )
                           ],
                         ),
@@ -248,7 +266,9 @@ class DetailPage extends StatelessWidget {
                         height: 50,
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            launchURL('tel:+62898765431');
+                          },
                           child: Text(
                             'Book Now',
                             style: whiteTextStyle.copyWith(fontSize: 18),
