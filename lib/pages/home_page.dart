@@ -113,54 +113,24 @@ class Homepage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: edge),
               child: FutureBuilder(
+                //Creates a widget that builds itself based on the latest snapshot of interaction with a [Future].
+                //The [builder] must not be null.
                 future: spaceProvider.getRecommendedSpace(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
+                    List<Space> data = snapshot.data;
+                    int index = 0;
+
                     return Column(
-                      children: [
-                        SpaceCard(
-                          Space(
-                            id: 1,
-                            name: 'Kuretakeso Hott',
-                            price: 52,
-                            imageUrl: 'assets/space1.png',
-                            city: 'Bandung',
-                            country: 'Germany',
-                            rating: 4,
+                      children: data.map((item) {
+                        index++;
+                        return Container(
+                          margin: EdgeInsets.only(
+                            top: index == 1 ? 0 : 30,
                           ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        SpaceCard(
-                          Space(
-                            id: 2,
-                            name: 'Roemah Nenek',
-                            price: 11,
-                            imageUrl: 'assets/space2.png',
-                            city: 'Seattle',
-                            country: 'Bogor',
-                            rating: 5,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        SpaceCard(
-                          Space(
-                            id: 3,
-                            name: 'Darrling How',
-                            price: 20,
-                            imageUrl: 'assets/space2.png',
-                            city: 'Jakarta',
-                            country: 'Indonesia',
-                            rating: 3,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                      ],
+                          child: SpaceCard(item),
+                        );
+                      }).toList(),
                     );
                   } else {
                     return Center(

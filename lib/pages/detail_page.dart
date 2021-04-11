@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:golek_kos/models/space.dart';
 import 'package:golek_kos/pages/error_page.dart';
 import 'package:golek_kos/widgets/facility_item.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -6,11 +7,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../theme.dart';
 
 class DetailPage extends StatelessWidget {
-  @override
+  final Space space;
+  DetailPage(this.space);
+
   Widget build(BuildContext context) {
     //function for plugin url_launcher
     //Flutter has to inject plugin dependencies into the platform-specific parts of your app
     //hot restart/hot reload is not enough to trigger the injection, then close & re run the app
+    @override
     launchURL(String url) async => await canLaunch(url)
         ? await launch(url)
         // : throw 'could not launch $url';
