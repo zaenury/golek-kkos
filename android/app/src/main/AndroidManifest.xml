@@ -2,7 +2,7 @@
     package="com.example.golek_kos">
    <application
         android:label="golek_kos"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
