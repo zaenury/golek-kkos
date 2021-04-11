@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:golek_kos/models/space.dart';
 import 'package:golek_kos/pages/error_page.dart';
 import 'package:golek_kos/widgets/facility_item.dart';
+import 'package:golek_kos/widgets/rating_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../theme.dart';
@@ -89,42 +90,18 @@ class DetailPage extends StatelessWidget {
                               ],
                             ),
                             Row(
-                              children: [
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                  color: Color(0xff989BA1),
-                                ),
-                              ],
-                            )
+                              children: [1, 2, 3, 4, 5].map(
+                                (index) {
+                                  return Container(
+                                    margin: EdgeInsets.only(left: 2),
+                                    child: RatingItem(
+                                      index: index,
+                                      rating: space.rating,
+                                    ),
+                                  );
+                                },
+                              ).toList(),
+                            ),
                           ],
                         ),
                       ),
